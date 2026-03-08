@@ -16,6 +16,15 @@
         android:visibility="visible">
 
         <TextView
+            android:id="@+id/watching"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DUOLINGOON IS WATCHING"
+            android:textColor="#FF0000"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/streakText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
