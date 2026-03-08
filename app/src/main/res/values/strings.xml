@@ -1,4 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">stopgooningbruh</string>
-    <string name="accessibility_description">This service monitors browser URLs to block specific sites and enforce workouts.</string>
+
+    <!-- You probably already have this one -->
+    <string name="app_name">Stop Gooning</string>
+
+    <!-- Add exactly this (name must match what's in manifest) -->
+    <string name="accessibility_service_desc">
+        Monitors screen content to detect inappropriate keywords and protect your streak.
+    </string>
+
+    <!-- Optional but recommended: a short label for the service in settings -->
+    <string name="accessibility_service_label">Stop Gooning Detector</string>
+
 </resources>

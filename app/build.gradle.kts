@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
-    // Removed the manual Kotlin ID to stop the "Extension already registered" crash
+    // If you use Kotlin sources and have it in version catalog:
+    // alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -32,29 +33,32 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    // This block REPLACES the red 'kotlinOptions' line.
-    // In AGP 9.1.0, this is the standard way to set the JVM target.
     kotlin {
         jvmToolchain(11)
     }
 }
 
 dependencies {
-    // Hardcoded strings to bypass any potential issues in your libs.versions.toml
+    // Core AndroidX
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
-    // ML Kit & CameraX for the pushup blocker
-    implementation("com.google.mlkit:pose-detection:18.0.0-beta3")
-    val camerax_version = "1.3.0"
-    implementation("androidx.camera:camera-core:$camerax_version")
-    implementation("androidx.camera:camera-camera2:$camerax_version")
-    implementation("androidx.camera:camera-lifecycle:$camerax_version")
-    implementation("androidx.camera:camera-view:$camerax_version")
+    // CameraX - stable 1.5.3 (March 2026); change to "1.6.0-rc01" if you want RC features
+    val cameraxVersion = "1.5.3"
+    implementation("androidx.camera:camera-core:$cameraxVersion")
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    implementation("androidx.camera:camera-view:$cameraxVersion")
 
+    // ML Kit Pose Detection - latest beta (stable enough for most uses)
+    implementation("com.google.mlkit:pose-detection:18.0.0-beta5")
+    // For higher accuracy (bigger download size):
+    // implementation("com.google.mlkit:pose-detection-accurate:18.0.0-beta5")
+
+    // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.avi.stopgooning">
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
-    <!-- Required for Android 14+ if you decide to use a Service later -->
+    <!-- Optional: only if using special-use foreground service on Android 14+ -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"
         tools:node="replace" />
-
-    <!-- Tell the OS the camera is REQUIRED -->
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
-    <uses-feature android:name="android.hardware.camera.front" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -32,7 +29,6 @@
             </intent-filter>
         </activity>
 
-        <!-- PUSHUP SCREEN CONFIG -->
         <activity
             android:name=".PushupActivity"
             android:exported="false"
@@ -49,7 +45,9 @@
         <service
             android:name=".MyAccessibilityService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
-            android:exported="true">
+            android:exported="false"
+            android:label="@string/accessibility_service_label"
+            android:description="@string/accessibility_service_desc">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
@@ -59,4 +57,5 @@
         </service>
 
     </application>
+
 </manifest>
