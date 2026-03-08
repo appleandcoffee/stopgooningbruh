@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">stopgooningbruh</string>
+    <string name="accessibility_description">This service monitors browser URLs to block specific sites and enforce workouts.</string>
+</resources>
